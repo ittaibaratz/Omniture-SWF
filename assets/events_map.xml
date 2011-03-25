@@ -1,0 +1,234 @@
+<?xml version="1.0"?>
+<omnitureEventsMap>
+	<initialization>
+		<reportSuites>
+			<reportSuite>my-account-suite</reportSuite>
+		</reportSuites>
+		<visitorNamespace>companyname</visitorNamespace>
+		<trackingServer>companyname.122.2o7.net</trackingServer>
+		<pageName>{experience.playerName}</pageName>
+		<pageURL>{experience.url}</pageURL>
+		<trackClickMap value="true" />
+	</initialization>
+	
+	
+	<events>
+		<!-- VIDEO SPECIFIC EVENTS -->
+		<event name="mediaBegin">
+			<prop number="1" value="{video.customFields['my-custom-field']}" />
+			<prop number="2" value="{video.customFields['showname']}" />
+			<prop number="3" value="{video.displayName}" />
+			<prop number="4" value="Whatever Text I Want" />
+			<evar number="5" value="{video.customFields['episode-name']}" />
+			<eventNumbers value="3" />
+		</event>
+	
+		<event name="mediaComplete">
+			<prop number="1" value="{video.customFields['my-custom-field']}" />
+			<prop number="2" value="{video.customFields['showname']}" />
+			<prop number="3" value="{video.displayName}" />
+			<prop number="4" value="Whatever Text I Want" />
+			<evar number="5" value="{video.customFields['episode-name']}" />
+			<eventNumbers value="4" />
+		</event>
+		
+		<event name="mediaPause">
+			<prop number="1" value="{video.customFields['my-custom-field']}" />
+			<prop number="2" value="{video.customFields['showname']}" />
+			<prop number="3" value="{video.displayName}" />
+			<prop number="4" value="Whatever Text I Want" />
+			<evar number="5" value="{video.customFields['episode-name']}" />
+			<eventNumbers value="5" />
+		</event>
+		
+		<event name="mediaResume">	
+			<prop number="1" value="{video.customFields['my-custom-field']}" />
+			<prop number="2" value="{video.customFields['showname']}" />
+			<prop number="3" value="{video.displayName}" />
+			<prop number="4" value="Whatever Text I Want" />
+			<evar number="5" value="{video.customFields['episode-name']}" />
+			<eventNumbers value="6" />
+		</event>
+		
+		<event name="seekForward">	
+			<prop number="1" value="{video.customFields['my-custom-field']}" />
+			<prop number="2" value="{video.customFields['showname']}" />
+			<prop number="3" value="{video.displayName}" />
+			<prop number="4" value="Whatever Text I Want" />
+			<evar number="5" value="{video.customFields['episode-name']}" />
+			<eventNumbers value="7" />
+		</event>
+		
+		<event name="seekBackward">	
+			<prop number="1" value="{video.customFields['my-custom-field']}" />
+			<prop number="2" value="{video.customFields['showname']}" />
+			<prop number="3" value="{video.displayName}" />
+			<prop number="4" value="Whatever Text I Want" />
+			<evar number="5" value="{video.customFields['episode-name']}" />
+			<eventNumbers value="8" />
+		</event>
+		
+		<event name="mediaMuted"></event>
+		<event name="mediaUnmuted"></event>
+		<event name="volumeChanged"></event>
+		<event name="renditionChangeRequest"></event>
+		<event name="renditionChangeComplete"></event>
+		
+		<!-- time-based milestone example
+			<event name="milestone" type="time" value="10"> 
+		-->
+		<event name="milestone" type="percent" value="25">
+			<prop number="1" value="{video.customFields['my-custom-field']}" />
+			<prop number="2" value="{video.customFields['showname']}" />
+			<prop number="3" value="{video.displayName}" />
+			<prop number="4" value="Whatever Text I Want" />
+			<evar number="5" value="{video.customFields['episode-name']}" />
+			<eventNumbers value="20" />
+		</event>
+		
+		<event name="milestone" type="percent" value="50">
+			<prop number="1" value="{video.customFields['my-custom-field']}" />
+			<prop number="2" value="{video.customFields['showname']}" />
+			<prop number="3" value="{video.displayName}" />
+			<prop number="4" value="Whatever Text I Want" />
+			<evar number="5" value="{video.customFields['episode-name']}" />
+			<eventNumbers value="21" />
+		</event>
+		
+		<event name="milestone" type="percent" value="75">
+			<prop number="1" value="{video.customFields['my-custom-field']}" />
+			<prop number="2" value="{video.customFields['showname']}" />
+			<prop number="3" value="{video.displayName}" />
+			<prop number="4" value="Whatever Text I Want" />
+			<evar number="5" value="{video.customFields['episode-name']}" />
+			<eventNumbers value="22" />
+		</event>
+	
+		<!-- AD SPECIFIC EVENTS -->
+		<event name="adStart">
+			<prop number="1" value="{video.customFields['my-custom-field']}" />
+			<prop number="2" value="{video.customFields['showname']}" />
+			<prop number="3" value="{video.displayName}" />
+			<prop number="4" value="Whatever Text I Want" />
+			<evar number="5" value="{video.customFields['episode-name']}" />
+			<eventNumbers value="9" />
+		</event>
+	
+		<event name="adPause">
+			<prop number="1" value="{video.customFields['my-custom-field']}" />
+			<prop number="2" value="{video.customFields['showname']}" />
+			<prop number="3" value="{video.displayName}" />
+			<prop number="4" value="Whatever Text I Want" />
+			<evar number="5" value="{video.customFields['episode-name']}" />
+			<eventNumbers value="10" />
+		</event>
+		
+		<event name="adResume">
+			<prop number="1" value="{video.customFields['my-custom-field']}" />
+			<prop number="2" value="{video.customFields['showname']}" />
+			<prop number="3" value="{video.displayName}" />
+			<prop number="4" value="Whatever Text I Want" />
+			<evar number="5" value="{video.customFields['episode-name']}" />
+			<eventNumbers value="11" />
+		</event>
+		
+		<event name="adComplete">
+			<prop number="1" value="{video.customFields['my-custom-field']}" />
+			<prop number="2" value="{video.customFields['showname']}" />
+			<prop number="3" value="{video.displayName}" />
+			<prop number="4" value="Whatever Text I Want" />
+			<evar number="5" value="{video.customFields['episode-name']}" />
+			<eventNumbers value="13" />
+		</event>
+		
+		<event name="adClick"></event>
+		<event name="adPostrollsComplete"></event>
+		
+		<event name="externalAd">
+			<prop number="1" value="{video.customFields['my-custom-field']}" />
+			<prop number="2" value="{video.customFields['showname']}" />
+			<prop number="3" value="{video.displayName}" />
+			<prop number="4" value="Whatever Text I Want" />
+			<evar number="5" value="{video.customFields['episode-name']}" />
+			<eventNumbers value="12" />
+		</event>
+		
+		<!-- MENU/SOCIAL SPECIFIC EVENTS -->
+		<event name="embedCodeRetrieved"></event>
+		<event name="linkGenerated"></event>
+		
+		<event name="codeCopied">
+			<prop number="1" value="{video.customFields['my-custom-field']}" />
+			<prop number="2" value="{video.customFields['showname']}" />
+			<prop number="3" value="{video.displayName}" />
+			<prop number="4" value="Whatever Text I Want" />
+			<evar number="5" value="{video.customFields['episode-name']}" />
+			<eventNumbers value="14" />
+		</event>
+
+		<event name="linkCopied">
+			<prop number="1" value="{video.customFields['my-custom-field']}" />
+			<prop number="2" value="{video.customFields['showname']}" />
+			<prop number="3" value="{video.displayName}" />
+			<prop number="4" value="Whatever Text I Want" />
+			<evar number="5" value="{video.customFields['episode-name']}" />
+			<eventNumbers value="15" />
+		</event>
+		
+		<event name="blogPosted">
+			<prop number="1" value="{video.customFields['my-custom-field']}" />
+			<prop number="2" value="{video.customFields['showname']}" />
+			<prop number="3" value="{video.displayName}" />
+			<prop number="4" value="Whatever Text I Want" />
+			<evar number="5" value="{video.customFields['episode-name']}" />
+			<eventNumbers value="16" />
+		</event>
+		
+		<event name="menuPageOpened">
+			<prop number="1" value="{video.customFields['my-custom-field']}" />
+			<prop number="2" value="{video.customFields['showname']}" />
+			<prop number="3" value="{video.displayName}" />
+			<prop number="4" value="Whatever Text I Want" />
+			<evar number="5" value="{video.customFields['episode-name']}" />
+			<eventNumbers value="17" />
+		</event>
+		
+		<event name="menuPageClosed">
+			<prop number="1" value="{video.customFields['my-custom-field']}" />
+			<prop number="2" value="{video.customFields['showname']}" />
+			<prop number="3" value="{video.displayName}" />
+			<prop number="4" value="Whatever Text I Want" />
+			<evar number="5" value="{video.customFields['episode-name']}" />
+			<eventNumbers value="18" />
+		</event>
+		
+		<event name="emailSent">
+			<prop number="1" value="{video.customFields['my-custom-field']}" />
+			<prop number="2" value="{video.customFields['showname']}" />
+			<prop number="3" value="{video.displayName}" />
+			<prop number="4" value="Whatever Text I Want" />
+			<evar number="5" value="{video.customFields['episode-name']}" />
+			<eventNumbers value="19" />
+		</event>
+		
+		<!-- EXPERIENCE SPECIFIC EVENTS -->
+		<event name="enterFullScreen">
+			<prop number="1" value="{video.customFields['my-custom-field']}" />
+			<prop number="2" value="{video.customFields['showname']}" />
+			<prop number="3" value="{video.displayName}" />
+			<prop number="4" value="Whatever Text I Want" />
+			<evar number="5" value="{video.customFields['episode-name']}" />
+			<eventNumbers value="1" />
+		</event>
+		
+		<event name="exitFullScreen">
+			<prop number="1" value="{video.customFields['my-custom-field']}" />
+			<prop number="2" value="{video.customFields['showname']}" />
+			<prop number="3" value="{video.displayName}" />
+			<prop number="4" value="Whatever Text I Want" />
+			<evar number="5" value="{video.customFields['episode-name']}" />
+			<eventNumbers value="2" />
+		</event>
+	</events>
+	
+</omnitureEventsMap>
