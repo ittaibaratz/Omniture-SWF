@@ -9,6 +9,8 @@
 		<pageName>{experience.playerName}</pageName>
 		<pageURL>{experience.url}</pageURL>
 		<trackClickMap value="true" />
+		<currencyCode>USD</currencyCode>
+		<charSet>UTF-8</charSet>
 	</initialization>
 	
 	

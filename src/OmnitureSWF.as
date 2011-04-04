@@ -1,5 +1,5 @@
 /**
- * Brightcove Omniture SWF 0.9.0 (24 MARCH 2011)
+ * Brightcove Omniture SWF 0.9.1 (4 APRIL 2011)
  *
  * REFERENCES:
  *	 Website: http://opensource.brightcove.com
@@ -95,7 +95,7 @@ package {
 		{
 			trace("@project OmnitureSWF");
 			trace("@author Brandon Aaskov");
-			trace("@version 0.9.0");
+			trace("@version 0.9.1");
 		}
 
 		//---------------------------------------------------------------------------------------------- INITIALIZATION
@@ -204,8 +204,8 @@ package {
 			/* You may add or alter any code config here */
 			_omniture.pageName = _binder.getValue(_eventsMap.pageName, null, _experienceModule);
 			_omniture.pageURL = _binder.getValue(_eventsMap.pageURL, null, _experienceModule);
-			_omniture.charSet = "UTF-8";
-			_omniture.currencyCode = "USD";
+			_omniture.charSet = _eventsMap.charSet;
+			_omniture.currencyCode = _eventsMap.currencyCode;
 
 			/* Turn on and configure ClickMap tracking here */
 			_omniture.trackClickMap = _eventsMap.trackClickMap;
