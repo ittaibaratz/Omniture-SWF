@@ -18,6 +18,8 @@ package com.brightcove.opensource
 		public var pageName:String;
 		public var pageURL:String;
 		public var trackClickMap:Boolean;
+		public var currencyCode:String;
+		public var charSet:String;
 		
 		[Embed(source="../assets/events_map.xml", mimeType="application/octet-stream")]
 		protected const EventsMap:Class;
@@ -69,6 +71,18 @@ package com.brightcove.opensource
 			pageName = eventsMap.initialization.pageName;
 			pageURL = eventsMap.initialization.pageURL;
 			trackClickMap = (eventsMap.initialization.trackClickMap.@value == 'true') ? true : false;
+			
+			currencyCode = eventsMap.initialization.currencyCode; 
+			if(!currencyCode)
+			{
+				currencyCode = "USD"; //set default
+			}
+			
+			charSet = eventsMap.initialization.charSet;
+			if(!charSet)
+			{
+				charSet = "UTF-8"; //set default
+			}
 		}
 		
 		private function parseEventsMap(eventsMap:XML):void
