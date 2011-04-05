@@ -686,6 +686,17 @@ package {
 
 				cuePoints.push(cuePoint);
 			}
+			
+			//clear out existing omniture cue points if they're still around after replay
+			var existingCuePoints:Array = _cuePointsModule.getCuePoints(video.id);
+			for(var j:uint = 0; j < existingCuePoints.length; j++)
+			{
+				var existingCuePoint:VideoCuePointDTO = existingCuePoints[j];
+				if(existingCuePoint.name == 'omniture-milestone')
+				{
+					_cuePointsModule.removeCodeCuePointsAtTime(video.id, existingCuePoint.time);
+				}
+			}
 
 			_cuePointsModule.addCuePoints(video.id, cuePoints);
         }
