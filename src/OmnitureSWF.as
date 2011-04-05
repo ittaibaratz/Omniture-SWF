@@ -439,7 +439,6 @@ package {
 
 		private function onAdComplete(event:AdEvent):void
 		{
-			debug("AD COMPLETE");
 			var trackingInfo:Object = findEventInformation("adComplete", _eventsMap.map, _currentVideo);
 			trackEvent(trackingInfo);
 		}
@@ -512,7 +511,7 @@ package {
 			var cuePoint:VideoCuePointDTO = event.cuePoint;
 			var trackingInfo:Object = {};
 
-			if(cuePoint.type == 2 && cuePoint.name == "omniture-milestone")
+			if(cuePoint.type == 1 && cuePoint.name == "omniture-milestone")
             {   
             	var metadataSplit:Array;
 
@@ -668,7 +667,7 @@ package {
 				if(milestone.type == 'percent')
 				{
 					cuePoint = {
-						type: 2, //chapter cue point
+						type: 1, //code cue point
 						name: "omniture-milestone",
 						metadata: milestone.marker + "%", //percent
 						time: (video.length/1000) * (milestone.marker/100)
@@ -677,7 +676,7 @@ package {
 				else if(milestone.type == 'time')
 				{
 					cuePoint = {
-						type: 2, //chapter cue point
+						type: 1, //code cue point
 						name: "omniture-milestone",
 						metadata: milestone.marker + "s", //seconds
 						time: milestone.marker
@@ -692,7 +691,7 @@ package {
 			for(var j:uint = 0; j < existingCuePoints.length; j++)
 			{
 				var existingCuePoint:VideoCuePointDTO = existingCuePoints[j];
-				if(existingCuePoint.name == 'omniture-milestone')
+				if(existingCuePoint.type == 1 && existingCuePoint.name == 'omniture-milestone')
 				{
 					_cuePointsModule.removeCodeCuePointsAtTime(video.id, existingCuePoint.time);
 				}
