@@ -95,7 +95,7 @@ package {
 		{
 			trace("@project OmnitureSWF");
 			trace("@author Brandon Aaskov");
-			trace("@version 0.9.1");
+			trace("@version 0.9.1 HOTFIX");
 		}
 
 		//---------------------------------------------------------------------------------------------- INITIALIZATION
@@ -439,6 +439,7 @@ package {
 
 		private function onAdComplete(event:AdEvent):void
 		{
+			debug("AD COMPLETE");
 			var trackingInfo:Object = findEventInformation("adComplete", _eventsMap.map, _currentVideo);
 			trackEvent(trackingInfo);
 		}
@@ -519,11 +520,15 @@ package {
             	{
             		metadataSplit = cuePoint.metadata.split('%');
             		trackingInfo = findEventInformation("milestone", _eventsMap.map, _currentVideo, "percent", metadataSplit[0]);
+            		
+            		_cuePointsModule.removeCodeCuePointsAtTime(_currentVideo.id, cuePoint.time);
             	}
             	else if(cuePoint.metadata.indexOf('s') !== -1) //seconds
             	{
             		metadataSplit = cuePoint.metadata.split('s');
             		trackingInfo = findEventInformation("milestone", _eventsMap.map, _currentVideo, "time", metadataSplit[0]);
+            		
+            		_cuePointsModule.removeCodeCuePointsAtTime(_currentVideo.id, cuePoint.time);
             	}
 
                 trackEvent(trackingInfo);
