@@ -1,5 +1,5 @@
 /**
- * Brightcove Omniture SWF 0.9.1 (4 APRIL 2011)
+ * Brightcove Omniture SWF 0.9.2 (14 APRIL 2011)
  *
  * REFERENCES:
  *	 Website: http://opensource.brightcove.com
@@ -95,7 +95,7 @@ package {
 		{
 			trace("@project OmnitureSWF");
 			trace("@author Brandon Aaskov");
-			trace("@version 0.9.1");
+			trace("@version 0.9.2");
 		}
 
 		//---------------------------------------------------------------------------------------------- INITIALIZATION
