@@ -95,7 +95,7 @@ package {
 		{
 			trace("@project OmnitureSWF");
 			trace("@author Brandon Aaskov");
-			trace("@version 0.9.1 HOTFIX");
+			trace("@version 0.9.1");
 		}
 
 		//---------------------------------------------------------------------------------------------- INITIALIZATION
@@ -195,6 +195,11 @@ package {
 		{
 			/* Specify the Report Suite ID(s) to track here */
 			_omniture.account = _eventsMap.reportSuites;
+			var paramAccountList:String = getParamValue("account");
+			if(paramAccountList)
+			{
+				_omniture.account = paramAccountList;
+			}
 			debug("Account ID(s) is " + _omniture.account);
 
 			/* Turn on and configure debugging here */
@@ -657,7 +662,7 @@ package {
 
         private function createCuePoints(milestones:Array, video:VideoDTO):void
         {
-			var cuePoints:Array = new Array();
+        	var cuePoints:Array = new Array();
 
 			for(var i:uint = 0; i < milestones.length; i++)
 			{
