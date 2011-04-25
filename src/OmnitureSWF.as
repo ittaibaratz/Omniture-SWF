@@ -95,7 +95,7 @@ package {
 		{
 			trace("@project OmnitureSWF");
 			trace("@author Brandon Aaskov");
-			trace("@version 0.9.2");
+			trace("@version 0.9.2 (hotfix: cue point error)");
 		}
 
 		//---------------------------------------------------------------------------------------------- INITIALIZATION
@@ -662,47 +662,53 @@ package {
 
         private function createCuePoints(milestones:Array, video:VideoDTO):void
         {
-        	var cuePoints:Array = new Array();
-
-			for(var i:uint = 0; i < milestones.length; i++)
+        	if(milestones)
 			{
-				var milestone:Object = milestones[i];
-				var cuePoint:Object = {};
-
-				if(milestone.type == 'percent')
+	        	var cuePoints:Array = new Array();
+	        	
+				for(var i:uint = 0; i < milestones.length; i++)
 				{
-					cuePoint = {
-						type: 1, //code cue point
-						name: "omniture-milestone",
-						metadata: milestone.marker + "%", //percent
-						time: (video.length/1000) * (milestone.marker/100)
-					};
+					var milestone:Object = milestones[i];
+					var cuePoint:Object = {};
+	
+					if(milestone.type == 'percent')
+					{
+						cuePoint = {
+							type: 1, //code cue point
+							name: "omniture-milestone",
+							metadata: milestone.marker + "%", //percent
+							time: (video.length/1000) * (milestone.marker/100)
+						};
+					}
+					else if(milestone.type == 'time')
+					{
+						cuePoint = {
+							type: 1, //code cue point
+							name: "omniture-milestone",
+							metadata: milestone.marker + "s", //seconds
+							time: milestone.marker
+						};
+					}
+	
+					cuePoints.push(cuePoint);
 				}
-				else if(milestone.type == 'time')
+				
+				//clear out existing omniture cue points if they're still around after replay
+				var existingCuePoints:Array = _cuePointsModule.getCuePoints(video.id);
+				if(existingCuePoints)
 				{
-					cuePoint = {
-						type: 1, //code cue point
-						name: "omniture-milestone",
-						metadata: milestone.marker + "s", //seconds
-						time: milestone.marker
-					};
+					for(var j:uint = 0; j < existingCuePoints.length; j++)
+					{
+						var existingCuePoint:VideoCuePointDTO = existingCuePoints[j];
+						if(existingCuePoint.type == 1 && existingCuePoint.name == 'omniture-milestone')
+						{
+							_cuePointsModule.removeCodeCuePointsAtTime(video.id, existingCuePoint.time);
+						}
+					}
 				}
-
-				cuePoints.push(cuePoint);
+				
+				_cuePointsModule.addCuePoints(video.id, cuePoints);
 			}
-			
-			//clear out existing omniture cue points if they're still around after replay
-			var existingCuePoints:Array = _cuePointsModule.getCuePoints(video.id);
-			for(var j:uint = 0; j < existingCuePoints.length; j++)
-			{
-				var existingCuePoint:VideoCuePointDTO = existingCuePoints[j];
-				if(existingCuePoint.type == 1 && existingCuePoint.name == 'omniture-milestone')
-				{
-					_cuePointsModule.removeCodeCuePointsAtTime(video.id, existingCuePoint.time);
-				}
-			}
-
-			_cuePointsModule.addCuePoints(video.id, cuePoints);
         }
 
         private function findEventInformation(eventName:String, map:Array, video:VideoDTO, milestoneType:String = null, milestoneMarker:uint = 0):Object
