@@ -207,8 +207,8 @@ package {
 			_omniture.trackLocal = true;
 
 			/* You may add or alter any code config here */
-			_omniture.pageName = _binder.getValue(_eventsMap.pageName, null, _experienceModule);
-			_omniture.pageURL = _binder.getValue(_eventsMap.pageURL, null, _experienceModule);
+			_omniture.pageName = _binder.getValue(_eventsMap.pageName, _experienceModule);
+			_omniture.pageURL = _binder.getValue(_eventsMap.pageURL, _experienceModule);
 			_omniture.charSet = _eventsMap.charSet;
 			_omniture.currencyCode = _eventsMap.currencyCode;
 
@@ -753,14 +753,14 @@ package {
 					for(var j:uint = 0; j < props.length; j++)
 					{
 						var prop:Object = props[j];						
-						eventInfo.prop[prop.number] = _binder.getValue(prop.value, _currentVideo);
+						eventInfo.prop[prop.number] = _binder.getValue(prop.value, _experienceModule, _currentVideo);
 					}
 
 					//add evar numbers as the key, and their value as the value
 					for(var k:uint = 0; k < eVars.length; k++)
 					{	
 						var eVar:Object = eVars[k];												
-						eventInfo.eVar[eVar.number] = _binder.getValue(eVar.value, _currentVideo);
+						eventInfo.eVar[eVar.number] = _binder.getValue(eVar.value, _experienceModule, _currentVideo);
 					}
 
 					return eventInfo;
