@@ -11,7 +11,7 @@ package com.brightcove.opensource
 		{
 		}
 		
-		public function getValue(property:String, video:VideoDTO = null, experienceModule:ExperienceModule = null):String
+		public function getValue(property:String, experienceModule:ExperienceModule, video:VideoDTO = null):String
 		{
 			if(property.indexOf("{") !== -1)
 			{
