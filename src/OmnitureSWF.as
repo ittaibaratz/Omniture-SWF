@@ -774,7 +774,7 @@ package {
 
  		public function getCustomVideoName(video:VideoDTO):String
 		{
-			return video.customFields['show-name'] + " | " + video.displayName;
+			return video.id + " | " + video.displayName;
 		}
 
 		public function onOmnitureUnload():void
