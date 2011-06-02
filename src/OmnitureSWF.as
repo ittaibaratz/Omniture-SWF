@@ -258,6 +258,7 @@ package {
 		private function onMediaChange(event:MediaEvent):void
 		{
 			_mediaBegin = false;
+			_mediaComplete = false;
 
 			updateVideoInfo(); //this doesn't always fire, so we also update in onMediaBegin
 		}
@@ -277,6 +278,7 @@ package {
 				trackEvent(trackingInfo);
 
 				_mediaBegin = true;
+				_mediaComplete = false;
 			}
 		}
 
