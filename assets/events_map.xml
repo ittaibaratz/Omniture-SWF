@@ -21,6 +21,7 @@
 			<prop number="2" value="{video.customFields['showname']}" />
 			<prop number="3" value="{video.displayName}" />
 			<prop number="4" value="Whatever Text I Want" />
+			<prop number="5" value="{experience.url}" />
 			<evar number="5" value="{video.customFields['episode-name']}" />
 			<eventNumbers value="3" />
 		</event>
