@@ -1,5 +1,5 @@
 /**
- * Brightcove Omniture SWF 1.0.0 (2 JUNE 2011)
+ * Brightcove Omniture SWF 1.0.1 (2 JUNE 2011)
  *
  * REFERENCES:
  *	 Website: http://opensource.brightcove.com
@@ -95,7 +95,7 @@ package {
 		{
 			trace("@project OmnitureSWF");
 			trace("@author Brandon Aaskov");
-			trace("@version 1.0.0");
+			trace("@version 1.0.1");
 		}
 
 		//---------------------------------------------------------------------------------------------- INITIALIZATION
@@ -774,7 +774,7 @@ package {
 
  		public function getCustomVideoName(video:VideoDTO):String
 		{
-			return video.customFields['show-name'] + " | " + video.displayName;
+			return video.id + " | " + video.displayName;
 		}
 
 		public function onOmnitureUnload():void
