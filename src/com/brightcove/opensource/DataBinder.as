@@ -14,25 +14,26 @@ package com.brightcove.opensource
 		public function getValue(property:String, experienceModule:ExperienceModule, video:VideoDTO = null):String
 		{
 			if(property.indexOf("{") !== -1)
-			{
-				var dataBindingValue:String = property.substring(1, property.length-1); //strip off the curly braces
-				var propertySplit:Array = dataBindingValue.split('.');
-				
-				if(propertySplit[0].toLowerCase() == 'video')
+			{				
+				var matches:Array = property.match(/\{.*?\}/g); 
+				for(var i:uint = 0; i < matches.length; i++)
 				{
-					return getVideoProperty(propertySplit, video);
+					var match:String = matches[i];					
+					var dataBindingValue:String = match.substring(1, match.length-1); //strip off the curly braces
+					var propertySplit:Array = dataBindingValue.split('.');
+					
+					if(propertySplit[0].toLowerCase() == 'video')
+					{
+						property = property.replace(match, getVideoProperty(propertySplit, video));
+					}
+					else if(propertySplit[0].toLowerCase() == 'experience')
+					{
+						property = property.replace(match, getExperienceProperty(propertySplit, experienceModule));
+					}
 				}
-				else if(propertySplit[0].toLowerCase() == 'experience')
-				{
-					return getExperienceProperty(propertySplit, experienceModule);
-				}
-			}
-			else //not a data-binding value, so just return it
-			{
-				return property;
 			}
 			
-			return null;
+			return property; //if we didn't get anything data-bound, it returns what was passed in
 		}
 		
 		private function getVideoProperty(propertySplit:Array, video:VideoDTO):String
