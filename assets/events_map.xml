@@ -22,6 +22,7 @@
 			<prop number="3" value="{video.displayName}" />
 			<prop number="4" value="Whatever Text I Want" />
 			<prop number="5" value="{experience.url}" />
+			<prop number="6" value="Brightcove:{experience.playerName}:{video.displayName}" />
 			<evar number="5" value="{video.customFields['episode-name']}" />
 			<eventNumbers value="3" />
 		</event>

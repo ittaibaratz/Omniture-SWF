@@ -64,7 +64,7 @@ In the sample file, you'll see a long list of events. Each `event` entry can hav
 
 Current Supported Data Binding Fields
 =====================================
-If you want to use data-binding, make sure to surround the below values with curly braces. See the events_map.xml sample file for an example. When data-binding to custom fields, you'll be using the internal name gets automatically created when you make the custom field. If you're unsure what that internal name is, please check the 'Video Fields' section under your account settings in the Brightcove Studio. 
+If you want to use data-binding, make sure to surround the below values with curly braces. You can even bind multiple fields for the same prop/eVar. See the events_map.xml sample file for an example. When data-binding to custom fields, you'll be using the internal name gets automatically created when you make the custom field. If you're unsure what that internal name is, please check the 'Video Fields' section under your account settings in the Brightcove Studio.
 
 Experience Data-Bindings
 ------------------------
