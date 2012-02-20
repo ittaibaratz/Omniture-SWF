@@ -10,31 +10,37 @@ package com.brightcove.opensource
 		public function DataBinder()
 		{
 		}
-		
+
 		public function getValue(property:String, experienceModule:ExperienceModule, video:VideoDTO = null):String
 		{
-			if(property.indexOf("{") !== -1)
-			{				
-				var matches:Array = property.match(/\{.*?\}/g); 
-				for(var i:uint = 0; i < matches.length; i++)
+			var propStart:int;
+			var propEnd:int;
+			var idx:int =0;
+			
+			while ((propStart = property.indexOf("{")) !== -1 && 
+					(propEnd = property.indexOf("}")) > propStart && idx<10)
+			{
+				idx++; // Avoid loops.
+				var dataBindingValue:String = property.substring(propStart, propEnd+1); //strip off the curly braces
+				var dataBindingStripped:String = dataBindingValue.substring(1,dataBindingValue.length-1); 
+				var propertySplit:Array = dataBindingStripped.split('.');
+				var value:String = "unknown";
+				
+				if(propertySplit[0].toLowerCase() == 'video')
 				{
-					var match:String = matches[i];					
-					var dataBindingValue:String = match.substring(1, match.length-1); //strip off the curly braces
-					var propertySplit:Array = dataBindingValue.split('.');
-					
-					if(propertySplit[0].toLowerCase() == 'video')
-					{
-						property = property.replace(match, getVideoProperty(propertySplit, video));
-					}
-					else if(propertySplit[0].toLowerCase() == 'experience')
-					{
-						property = property.replace(match, getExperienceProperty(propertySplit, experienceModule));
-					}
+					value = getVideoProperty(propertySplit, video);
 				}
+				else if(propertySplit[0].toLowerCase() == 'experience')
+				{
+					value = getExperienceProperty(propertySplit, experienceModule);
+				}
+
+				property = property.replace(dataBindingValue,value);
 			}
 			
-			return property; //if we didn't get anything data-bound, it returns what was passed in
+			return property;
 		}
+
 		
 		private function getVideoProperty(propertySplit:Array, video:VideoDTO):String
 		{
